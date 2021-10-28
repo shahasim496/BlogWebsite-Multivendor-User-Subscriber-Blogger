@@ -40,7 +40,7 @@ Route::get('/updateuser/{id}', [App\Http\Controllers\HomeController::class, 'upd
 Route::get('Register-user',[HomeController::class,'RegisterUser']);
 
 //import and Export data in excel , pdf
-Route::get('/export',[HomeController::class,'export']);
+Route::get('/export',[HomeController::class,'export'])->name('export_data');
 Route::get('/downlaodpdf', [PostsController::class, 'generatePDF']);
 Route::get('file-import-export', [UserController::class, 'fileImportExport']);
 Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');

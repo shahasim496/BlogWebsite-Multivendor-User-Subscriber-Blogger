@@ -7,16 +7,39 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12 col-md-offset-2">
                 <div class="panel panel-default">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+
+                    
+                    <button type="button" style="text-align: center;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                         Add New User
                       </button>
               
-                    
+                      
+                      
+                      {{-- IMPORT DATA USING EXCEL --}}
+                      <div class="container mt-2 text-center">
+                        
+                        <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
+                                <div class="custom-file text-left">
+                                    <input type="file" name="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Import data</button>
+                            <a class="btn btn-success" href="{{ route('export_data') }}">Export data</a>
+                        </form>
+                        
+                    </div>
+
+
                     <div class="panel-body">
+                         
                         <table class="table" id="datatable">
                             <thead>
+                                
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
