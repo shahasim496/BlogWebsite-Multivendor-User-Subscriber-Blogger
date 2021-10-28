@@ -19,6 +19,7 @@ use App\Http\Controllers\BloggerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Models\Post;
 use App\Models\category;
 use App\Models\comment;
@@ -41,6 +42,9 @@ Route::get('Register-user',[HomeController::class,'RegisterUser']);
 //import and Export data in excel , pdf
 Route::get('/export',[HomeController::class,'export']);
 Route::get('/downlaodpdf', [PostsController::class, 'generatePDF']);
+Route::get('file-import-export', [UserController::class, 'fileImportExport']);
+Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [UserController::class, 'fileExport'])->name('file-export');
 
 //for yajra tables for Article case
 Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles');
